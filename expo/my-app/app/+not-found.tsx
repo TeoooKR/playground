@@ -5,6 +5,7 @@ export default function NotFoundScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>없음</Text>
+            {/* @ts-ignore */}
             <Link href="/" replace style={styles.button}>asdf</Link>
         </View>        
     );
