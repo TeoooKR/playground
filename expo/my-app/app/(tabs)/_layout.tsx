@@ -11,10 +11,12 @@ export default function RootLayout() {
             backgroundColor: '#25292e',
         },
         headerTintColor: '#fff',
-        headerShadowVisible: false,
+        headerShadowVisible: false, //줄 x
+        
+
 
         tabBarStyle: {
-            backgroundColor: '#25292e',
+            backgroundColor: '#25292e',            
         },
     }}> 
         <Tabs.Screen

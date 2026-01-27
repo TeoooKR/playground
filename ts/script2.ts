@@ -24,3 +24,9 @@ object.x = 5
 console.log(`${object.x} | ${object.y}`)
 
 const object2 = {x : 2, y : 3} as const
+
+
+function func6({ y } : { y : number}) {     // 객체 쪼개는거임 y를 꺼내 // y : number는 조건
+    console.log(y)
+}
+func6(object2);
