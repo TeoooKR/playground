@@ -2,11 +2,12 @@ import { View, StyleSheet } from "react-native";
 import ImageViewer from '@/components/ImageViewer';
 import Button from '@/components/Button';
 import * as ImagePicker from 'expo-image-picker';
-const PlaceholderImage = require('@/assets/images/background-image.png');
+const PlaceholderImage = require('@/assets/images/background-image.png'); // 이미지소스프롭타입
 import { useState } from 'react';
 
 
 export default function IndexScreen() {
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined); // <> selectedImage에 string 또는 undefined가 들어올 수 있다.
 
 
   const pickImageAsync = async () => {
@@ -15,9 +16,10 @@ export default function IndexScreen() {
       allowsEditing: true, // 사진을 고른 후 편집
       quality: 1, // 사진 화질 최고 사양으로 (0~1)
     });
-
+    
     if (!result.canceled) {
       console.log(result);
+      setSelectedImage(result.assets[0].uri);
     } else {
       alert('You did not select any image.');
     }
@@ -25,7 +27,7 @@ export default function IndexScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage}></ImageViewer>
+        <ImageViewer imgSource={PlaceholderImage} img={selectedImage}></ImageViewer>
       </View>
       <View style={styles.footerContainer}>
         <Button label="Choose a photo" theme='primary' onPress={pickImageAsync}/>
